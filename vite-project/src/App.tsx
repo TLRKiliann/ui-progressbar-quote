@@ -18,6 +18,8 @@ function App() {
 
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
 
+  const [imgDataBool, setImgDataBool] = useState<boolean>(true);
+
   useEffect(() => {
     const callerInside = () => {
       fetch("https://api.quotable.io/random")
@@ -123,10 +125,15 @@ function App() {
   };
 
   const displayImages = () => {
+    setImgDataBool(false);
     fetch("https://picsum.photos/1600/1000")
       .then((res) => setImages(res.url))
       .catch((error) => error);
   };
+
+  const displayQuote = () => {
+    setImgDataBool(true);
+  }
 
   return (
     <main>
@@ -138,6 +145,12 @@ function App() {
         <div className="frame">
           <div className="graph-in">
             <p style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "100%",
               textAlign: "center",
               fontSize: "x-large",
               fontWeight: "bold",
@@ -145,8 +158,10 @@ function App() {
               color: "#333",
               padding: "20px"}}
             >
-              {data?.content}
-              <img src={images} width={900} height={320} alt="img" />
+            {imgDataBool ? data?.content : (
+              <img src={images} width={840} height={380} alt="img" />
+              )
+            }
             </p>
           </div>
         </div>
@@ -247,10 +262,10 @@ function App() {
               Img
             </button>
 
-            <button type="button" onClick={displayImages}
+            <button type="button" onClick={displayQuote}
               className="button"
             >
-              Video
+              Quote
             </button>
 
           </div>
