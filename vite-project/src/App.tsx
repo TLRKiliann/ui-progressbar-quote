@@ -52,7 +52,7 @@ function App() {
 
   const [countOne, setCountOne] = useState<number>(0);
   const [countTwo, setCountTwo] = useState<number>(0);
-  const [i, setI] = useState<number>(0)
+  const [iColor, setIColor] = useState<number>(0)
 
   const [images, setImages] = useState<string>("");
 
@@ -73,8 +73,8 @@ function App() {
 
   let changeColor = null;
 
-  if (i <= 3) {
-    changeColor = colorsQuoteText[i].color;
+  if (iColor <= 3) {
+    changeColor = colorsQuoteText[iColor].color;
   } else {
     changeColor = colorsQuoteText[0].color;
   }
@@ -82,18 +82,18 @@ function App() {
   const incrementOne = (): void => {
     setCountOne((count) => count += 1);
     setChangeQuote(!changeQuote);
-    setI(0);
+    setIColor(0);
     setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
   };
 
   const decrementOne = (): void => {
     setCountOne((count) => count -= 1);
     setChangeQuote(!changeQuote);
-    if (i <= 3) {
-      setI((i: number) => i = 1);
+    if (iColor <= 3) {
+      setIColor(1);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[1].color}));
     } else {
-      setI(0);
+      setIColor(0);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
     }
   };
@@ -101,11 +101,11 @@ function App() {
   const incrementTwo = (): void => {
     setCountTwo((count) => count += 1)
     setChangeQuote(!changeQuote);
-    if (i <= 3) {
-      setI((i: number) => i = 2);
+    if (iColor <= 3) {
+      setIColor(2);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[2].color}));
     } else {
-      setI(0);
+      setIColor(0);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
     }
   };
@@ -113,11 +113,11 @@ function App() {
   const decrementTwo = (): void => {
     setCountTwo((count) => count -= 1)
     setChangeQuote(!changeQuote);
-    if (i <= 3) {
-      setI((i: number) => i = 3);
+    if (iColor <= 3) {
+      setIColor(3);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[3].color}));
     } else {
-      setI(0);
+      setIColor(0);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
     }
   };
@@ -237,7 +237,21 @@ function App() {
 
             </div>
 
-              <button type="button" onClick={displayImages}>Dispay Img</button>
+          </div>
+
+          <div className="button-panel">
+
+            <button type="button" onClick={displayImages}
+              className="button"
+            >
+              Img
+            </button>
+
+            <button type="button" onClick={displayImages}
+              className="button"
+            >
+              Video
+            </button>
 
           </div>
 
