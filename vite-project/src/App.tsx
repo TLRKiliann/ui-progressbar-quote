@@ -262,7 +262,7 @@ function App() {
           <button type="button" onClick={displayImg}
             className="button"
           >
-            Display/Change image
+            Display/Change img
           </button>
 
           <button type="button" onClick={switcherImg}
