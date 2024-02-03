@@ -142,3 +142,10 @@ main {
   width: 60%;
   padding: 10px;
 }
+
+.button-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
