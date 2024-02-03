@@ -14,22 +14,38 @@ type DataProps = {
 
 function App() {
 
-  const [data, setData] = useState<DataProps>();
+  const [data, setData] = useState<DataProps>({content: ""});
+  const [urlImg, setUrlImg] = useState<string>("");
+
+  const [countOne, setCountOne] = useState<number>(0);
+  const [countTwo, setCountTwo] = useState<number>(0);
+  const [iColor, setIColor] = useState<number>(0)
 
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
-  const [imgDataBool, setImgDataBool] = useState<boolean>(true);
-  const [mainSwitchBool, setMainSwitchBool] = useState<boolean>(false);
+  const [changeImg, setChangeImg] = useState<boolean>(false);
 
   useEffect(() => {
-    const callerInside = () => {
+    //setUrlImg("");
+    const callerQuote = () => {
       fetch("https://api.quotable.io/random")
         .then((res) => res.json())
         .then((data) => setData(data))
-        .catch((error) => error);
+        .catch((error) => console.log(error?.message));
     }
-    callerInside();
-    return () => console.log("useEffect clean-up!");
+    callerQuote();
+    return () => console.log("useEffect clean-up (1)!");
   }, [changeQuote]);
+
+  useEffect(() => {
+    //setData({content: ""})
+    const callerImg = () => {
+      fetch("https://picsum.photos/1600/1000")
+        .then((res) => setUrlImg(res.url))
+        .catch((error) => console.log(error?.message));
+    }
+    callerImg();
+    return () => console.log("useEffect clean-up (2)!");
+  }, [changeImg]);
 
   const [colorsQuoteText, setColorsQuoteText] = useState<ColorsQuoteTextProps[]>([
     {
@@ -50,14 +66,6 @@ function App() {
     }
   ]);
 
-  //console.log(colorsQuoteText);
-
-  const [countOne, setCountOne] = useState<number>(0);
-  const [countTwo, setCountTwo] = useState<number>(0);
-  const [iColor, setIColor] = useState<number>(0)
-
-  const [images, setImages] = useState<string>("");
-
   let percent_w1 = null;
   let percent_w2 = null;
 
@@ -69,9 +77,9 @@ function App() {
     setCountTwo(0);
   };
 
-  let w: number = countOne + countTwo;
-  percent_w1 = (countOne * 100) / w;
-  percent_w2 = (countTwo * 100) / w;
+  let total: number = countOne + countTwo;
+  percent_w1 = (countOne * 100) / total;
+  percent_w2 = (countTwo * 100) / total;
   
   let changeColor = null;
   if (iColor <= 3) {
@@ -82,14 +90,12 @@ function App() {
 
   const incrementOne = (): void => {
     setCountOne((count) => count += 1);
-    setChangeQuote(!changeQuote);
     setIColor(0);
     setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
   };
 
   const decrementOne = (): void => {
     setCountOne((count) => count -= 1);
-    setChangeQuote(!changeQuote);
     if (iColor <= 3) {
       setIColor(1);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[1].color}));
@@ -101,7 +107,6 @@ function App() {
 
   const incrementTwo = (): void => {
     setCountTwo((count) => count += 1)
-    setChangeQuote(!changeQuote);
     if (iColor <= 3) {
       setIColor(2);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[2].color}));
@@ -113,7 +118,6 @@ function App() {
 
   const decrementTwo = (): void => {
     setCountTwo((count) => count -= 1)
-    setChangeQuote(!changeQuote);
     if (iColor <= 3) {
       setIColor(3);
       setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[3].color}));
@@ -123,45 +127,41 @@ function App() {
     }
   };
 
-  const displayImages = () => {
-    setImgDataBool(false);
-    fetch("https://picsum.photos/1600/1000")
-      .then((res) => setImages(res.url))
-      .catch((error) => {
-        return <p>{error?.message}</p>;
-      });
+  const displayQuote = () => {
+    setChangeQuote(!changeQuote);
   };
 
-  const displayQuote = () => {
-    setImgDataBool(true);
-  }
+  const displayImg = () => {
+    setChangeImg(!changeImg);
+  };
 
-  const switcherImgQuote = () => {
-    setMainSwitchBool(!mainSwitchBool);
-  }
+  const switcherImg = () => {
+    setUrlImg("");
+  };
+
+  const switcherQuote = () => {
+    setData({content: ""});
+  };
 
   return (
     <main>
       <div className="main-screen">
-        {/*
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-        */}
+
         <div className="frame">
           <div className="graph-in">
 
             <div className="para-quote" 
               style={{background: `${changeColor}`}}
             >
-            {mainSwitchBool ? imgDataBool ? data?.content : (
-              <img src={images} width={840} height={380} alt="img" />
-              ) : (
-                <div>
-                  <p className="layer-quote">{data?.content}</p>
-                  <img src={images} width={840} height={380} alt="img" />
-                </div>
-              )
-            }
+              {urlImg && data.content ? (
+                  <div className="para-img">
+                    <p className="layer-quote">{data?.content}</p>
+                    <img src={urlImg} width={840} height={380} alt="img" className="img" />
+                  </div>
+                ) : data?.content ? data.content : urlImg ? (
+                  <img src={urlImg} width={840} height={380} alt="img" className="img" />
+                ) : null
+              }
             </div>
           
           </div>
@@ -255,27 +255,34 @@ function App() {
 
           </div>
 
-          <div className="button-panel">
+        </div>
 
-            <button type="button" onClick={displayImages}
-              className="button"
-            >
-              Img
-            </button>
+        <div className="button-panel">
 
-            <button type="button" onClick={switcherImgQuote}
-              className="button"
-            >
-              Img + Quote
-            </button>
+          <button type="button" onClick={displayImg}
+            className="button"
+          >
+            Display/Change image
+          </button>
 
-            <button type="button" onClick={displayQuote}
-              className="button"
-            >
-              Quote
-            </button>
+          <button type="button" onClick={switcherImg}
+            className="button"
+          >
+            Hide img
+          </button>
 
-          </div>
+          <button type="button" onClick={switcherQuote}
+            className="button"
+          >
+            Hide quote
+          </button>
+
+
+          <button type="button" onClick={displayQuote}
+            className="button"
+          >
+            Display/Change quote
+          </button>
 
         </div>
 
@@ -285,4 +292,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
