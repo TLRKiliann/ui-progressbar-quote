@@ -17,8 +17,8 @@ function App() {
   const [data, setData] = useState<DataProps>();
 
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
-
   const [imgDataBool, setImgDataBool] = useState<boolean>(true);
+  const [mainSwitchBool, setMainSwitchBool] = useState<boolean>(false);
 
   useEffect(() => {
     const callerInside = () => {
@@ -72,15 +72,14 @@ function App() {
   let w: number = countOne + countTwo;
   percent_w1 = (countOne * 100) / w;
   percent_w2 = (countTwo * 100) / w;
-
+  
   let changeColor = null;
-
   if (iColor <= 3) {
     changeColor = colorsQuoteText[iColor].color;
   } else {
     changeColor = colorsQuoteText[0].color;
   }
- 
+
   const incrementOne = (): void => {
     setCountOne((count) => count += 1);
     setChangeQuote(!changeQuote);
@@ -128,11 +127,17 @@ function App() {
     setImgDataBool(false);
     fetch("https://picsum.photos/1600/1000")
       .then((res) => setImages(res.url))
-      .catch((error) => error);
+      .catch((error) => {
+        return <p>{error?.message}</p>;
+      });
   };
 
   const displayQuote = () => {
     setImgDataBool(true);
+  }
+
+  const switcherImgQuote = () => {
+    setMainSwitchBool(!mainSwitchBool);
   }
 
   return (
@@ -144,25 +149,21 @@ function App() {
         */}
         <div className="frame">
           <div className="graph-in">
-            <p style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              height: "100%",
-              textAlign: "center",
-              fontSize: "x-large",
-              fontWeight: "bold",
-              background: `${changeColor}`,
-              color: "#333",
-              padding: "20px"}}
+
+            <div className="para-quote" 
+              style={{background: `${changeColor}`}}
             >
-            {imgDataBool ? data?.content : (
+            {mainSwitchBool ? imgDataBool ? data?.content : (
               <img src={images} width={840} height={380} alt="img" />
+              ) : (
+                <div>
+                  <p className="layer-quote">{data?.content}</p>
+                  <img src={images} width={840} height={380} alt="img" />
+                </div>
               )
             }
-            </p>
+            </div>
+          
           </div>
         </div>
 
@@ -260,6 +261,12 @@ function App() {
               className="button"
             >
               Img
+            </button>
+
+            <button type="button" onClick={switcherImgQuote}
+              className="button"
+            >
+              Img + Quote
             </button>
 
             <button type="button" onClick={displayQuote}
