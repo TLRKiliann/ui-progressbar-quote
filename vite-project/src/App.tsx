@@ -3,11 +3,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion"
 import './App.css'
 
-type ColorsQuoteTextProps = {
-  id: number;
-  color: string;
-}
-
 type DataProps = {
   content: string;
 }
@@ -25,7 +20,6 @@ function App() {
   const [changeImg, setChangeImg] = useState<boolean>(false);
 
   useEffect(() => {
-    //setUrlImg("");
     const callerQuote = () => {
       fetch("https://api.quotable.io/random")
         .then((res) => res.json())
@@ -37,7 +31,6 @@ function App() {
   }, [changeQuote]);
 
   useEffect(() => {
-    //setData({content: ""})
     const callerImg = () => {
       fetch("https://picsum.photos/1600/1000")
         .then((res) => setUrlImg(res.url))
@@ -47,23 +40,11 @@ function App() {
     return () => console.log("useEffect clean-up (2)!");
   }, [changeImg]);
 
-  const [colorsQuoteText, setColorsQuoteText] = useState<ColorsQuoteTextProps[]>([
-    {
-      id: 1,
-      color: "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(255, 165, 0, 1))", //cyan orange
-    },
-    {
-      id: 2,
-      color: "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))", //red - orange
-    },
-    {
-      id: 3,
-      color: "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))", //green - cyan
-    },
-    {
-      id: 4,
-      color: "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(255, 165, 0, 1))", //green - orange
-    }
+  const [colorsQuoteText, setColorsQuoteText] = useState<string[]>([
+      "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
+      "linear-gradient(30deg, rgba(255, 255, 0, 1), rgba(0, 255, 255, 1))",
+      "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))",
+      "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(238, 130, 238, 1))"
   ]);
 
   let percent_w1 = null;
@@ -80,28 +61,31 @@ function App() {
   let total: number = countOne + countTwo;
   percent_w1 = (countOne * 100) / total;
   percent_w2 = (countTwo * 100) / total;
-  
+
   let changeColor = null;
   if (iColor <= 3) {
-    changeColor = colorsQuoteText[iColor].color;
+    changeColor = colorsQuoteText[iColor];
   } else {
-    changeColor = colorsQuoteText[0].color;
+    changeColor = colorsQuoteText[0];
   }
 
   const incrementOne = (): void => {
     setCountOne((count) => count += 1);
     setIColor(0);
-    setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
+    setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
+    
+    /*const mapping = colorsQuoteText.find((elt, i) => elt === colorsQuoteText[0] ? [colorsQuoteText[i+1]] : elt)
+    console.log(mapping, "mapping");*/
   };
 
   const decrementOne = (): void => {
     setCountOne((count) => count -= 1);
     if (iColor <= 3) {
       setIColor(1);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[1].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[1]]));
     } else {
       setIColor(0);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
     }
   };
 
@@ -109,10 +93,10 @@ function App() {
     setCountTwo((count) => count += 1)
     if (iColor <= 3) {
       setIColor(2);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[2].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[2]]));
     } else {
       setIColor(0);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
     }
   };
 
@@ -120,26 +104,26 @@ function App() {
     setCountTwo((count) => count -= 1)
     if (iColor <= 3) {
       setIColor(3);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[3].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[3]]));
     } else {
       setIColor(0);
-      setColorsQuoteText((prev) => ({...prev, color: colorsQuoteText[0].color}));
+      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
     }
   };
 
-  const displayQuote = () => {
+  const displayQuote = (): void => {
     setChangeQuote(!changeQuote);
   };
 
-  const displayImg = () => {
+  const displayImg = (): void => {
     setChangeImg(!changeImg);
   };
 
-  const switcherImg = () => {
+  const switcherImg = (): void => {
     setUrlImg("");
   };
 
-  const switcherQuote = () => {
+  const switcherQuote = (): void => {
     setData({content: ""});
   };
 
