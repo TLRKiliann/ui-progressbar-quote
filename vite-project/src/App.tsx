@@ -14,8 +14,6 @@ function App() {
 
   const [countOne, setCountOne] = useState<number>(0);
   const [countTwo, setCountTwo] = useState<number>(0);
-  const [iColor, setIColor] = useState<number>(0)
-
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
 
@@ -40,12 +38,21 @@ function App() {
     return () => console.log("useEffect clean-up (2)!");
   }, [changeImg]);
 
-  const [colorsQuoteText, setColorsQuoteText] = useState<string[]>([
+  const colorsQuoteText = [
       "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
       "linear-gradient(30deg, rgba(255, 255, 0, 1), rgba(0, 255, 255, 1))",
       "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))",
       "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(238, 130, 238, 1))"
-  ]);
+  ];
+
+  const colorsQuoteText2 = [
+    "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
+    "linear-gradient(30deg, rgba(255, 255, 0, 1), rgba(0, 255, 255, 1))",
+    "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))",
+    "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(238, 130, 238, 1))"
+];
+
+  const [colorBg, setColorBg] = useState<string>(colorsQuoteText[0]);
 
   let percent_w1 = null;
   let percent_w2 = null;
@@ -62,52 +69,71 @@ function App() {
   percent_w1 = (countOne * 100) / total;
   percent_w2 = (countTwo * 100) / total;
 
-  let changeColor = null;
-  if (iColor <= 3) {
-    changeColor = colorsQuoteText[iColor];
-  } else {
-    changeColor = colorsQuoteText[0];
-  }
-
   const incrementOne = (): void => {
-    setCountOne((count) => count += 1);
-    setIColor(0);
-    setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
-    
-    /*const mapping = colorsQuoteText.find((elt, i) => elt === colorsQuoteText[0] ? [colorsQuoteText[i+1]] : elt)
-    console.log(mapping, "mapping");*/
+    if (countOne < 3) {
+      setCountOne((count) => count += 1);
+    } else {
+      setCountOne((count) => count = 0);
+    }
+
+    let i = countOne + 1;
+    console.log(i, "i")
+
+    if (i >= 0 && i < colorsQuoteText.length) {
+      setColorBg(colorsQuoteText[i])
+    } else {
+      setColorBg(colorsQuoteText[0])
+    }
   };
 
   const decrementOne = (): void => {
-    setCountOne((count) => count -= 1);
-    if (iColor <= 3) {
-      setIColor(1);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[1]]));
+    if (countOne > 0 && countOne <= 3) {
+      setCountOne((count) => count -= 1);
     } else {
-      setIColor(0);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
+      setCountOne((count) => count = 0);
+    }
+
+    let i = countOne - 1;
+    console.log(i, "i")
+
+    if (i >= 0 && i < colorsQuoteText.length) {
+      setColorBg(colorsQuoteText[i])
+    } else {
+      setColorBg(colorsQuoteText[0])
     }
   };
 
   const incrementTwo = (): void => {
-    setCountTwo((count) => count += 1)
-    if (iColor <= 3) {
-      setIColor(2);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[2]]));
+    if (countTwo < 3) {
+      setCountTwo((count) => count += 1);
     } else {
-      setIColor(0);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
+      setCountTwo((_count) => _count = 0);
+    }
+
+    let j = countTwo + 1;
+    console.log(j, "i")
+
+    if (j >= 0 && j < colorsQuoteText2.length) {
+      setColorBg(colorsQuoteText2[j])
+    } else {
+      setColorBg(colorsQuoteText2[0])
     }
   };
 
   const decrementTwo = (): void => {
-    setCountTwo((count) => count -= 1)
-    if (iColor <= 3) {
-      setIColor(3);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[3]]));
+    if (countTwo > 0 && countTwo <= 3) {
+      setCountTwo((count) => count -= 1);
     } else {
-      setIColor(0);
-      setColorsQuoteText((prev) => ([...prev, colorsQuoteText[0]]));
+      setCountTwo((_count) => _count = 0);
+    }
+
+    let j = countTwo - 1;
+    console.log(j, "j")
+
+    if (j >= 0 && j < colorsQuoteText2.length) {
+      setColorBg(colorsQuoteText2[j])
+    } else {
+      setColorBg(colorsQuoteText2[0])
     }
   };
 
@@ -135,7 +161,7 @@ function App() {
           <div className="graph-in">
 
             <div className="para-quote" 
-              style={{background: `${changeColor}`}}
+              style={{background: `${colorBg}`}}
             >
               {urlImg && data.content ? (
                   <div className="para-img">
