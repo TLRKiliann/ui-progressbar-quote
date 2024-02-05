@@ -1,34 +1,34 @@
 type ButtonProps = {
     displayImg: () => void;
-    switcherImg: () => void;
-    switcherQuote: () => void;
+    handleHiddenImg: () => void;
+    handleHiddenQuote: () => void;
     displayQuote: () => void;
 }
 
-export default function BtnPanel({displayImg, switcherImg, switcherQuote, displayQuote}: ButtonProps) {
+export default function BtnPanel(props: ButtonProps) {
     return (
         <div className="button-panel">
 
-            <button type="button" onClick={displayImg}
+            <button type="button" onClick={props.displayImg}
                 className="button"
             >
                 Display/Change img
             </button>
 
-            <button type="button" onClick={switcherImg}
+            <button type="button" onClick={props.handleHiddenImg}
                 className="button"
             >
                 Hide img
             </button>
 
-            <button type="button" onClick={switcherQuote}
+            <button type="button" onClick={props.handleHiddenQuote}
                 className="button"
             >
                 Hide quote
             </button>
 
 
-            <button type="button" onClick={displayQuote}
+            <button type="button" onClick={props.displayQuote}
                 className="button"
             >
                 Display/Change quote

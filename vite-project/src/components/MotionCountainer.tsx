@@ -19,7 +19,7 @@ export default function MotionCountainer({percent_w1, percent_w2}: MotionProps) 
                 }}
                 >
                 <p className="para-motion1">
-                    {percent_w1 ? percent_w1.toFixed(2) : 0}%
+                    {percent_w1 ? `${percent_w1.toFixed(2)}%` : ""}
                 </p>
             </motion.div>
 
@@ -34,7 +34,7 @@ export default function MotionCountainer({percent_w1, percent_w2}: MotionProps) 
                 }}
                 >
                 <p className="para-motion2">
-                    {percent_w2 ? percent_w2.toFixed(2) : 0}%
+                    {percent_w2 ? `${percent_w2.toFixed(2)}%` : ""}
                 </p>
             </motion.div>
     </div>

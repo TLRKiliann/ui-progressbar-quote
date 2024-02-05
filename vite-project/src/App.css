@@ -133,19 +133,22 @@ main {
 }
 
 .para-motion1 {
+  content: "";
   width: 100%;
   text-align: center;
-  background: linear-gradient(30deg, rgba(255, 69, 0, 1) 10%, rgba(255, 255, 0, 1) 90%);
-  border-radius: 25px 0px 0px 25px;
+  background: linear-gradient(30deg, rgba(255, 255, 0, 1) 10%,rgba(255, 69, 0, 1) 90%);
+  border-radius: 25px 25px 25px 25px;
   color: #333;
+  margin-right: -5px
 }
 
 .para-motion2 {
   width: 100%;
   text-align: center;
-  background: linear-gradient(30deg, rgba(144, 238, 144, 1) 10%, rgba(0, 255, 255, 1) 90%);
-  border-radius: 0px 25px 25px 0px;
+  background: linear-gradient(30deg, rgba(255, 69, 0, 1) 10%,rgba(255, 255, 0, 1) 90%);
+  border-radius: 25px 25px 25px 25px;
   color: #333;
+  margin-left: -5px
 }
 
 .container-counter {

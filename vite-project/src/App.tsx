@@ -7,7 +7,7 @@ import './App.css'
 
 type DataProps = {
   content: string;
-}
+};
 
 function App() {
 
@@ -40,110 +40,64 @@ function App() {
     return () => console.log("useEffect clean-up (2)!");
   }, [changeImg]);
 
-  const colorsQuoteText = [
-    "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
-    "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 255, 0, 1))",
-    "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(255, 255, 0, 1))",
-    "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(238, 130, 238, 1))"
-  ];
+  const colorPalettOne: string[] = ["yellow", "orange", "orangered", "red"];
+  const colorPalettTwo: string[] = ["yellow", "orange", "orangered", "red"];
 
-  const colorsQuoteText2 = [
-    "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(255, 255, 0, 1))",
-    "linear-gradient(30deg, rgba(255, 255, 0, 1), rgba(0, 255, 255, 1))",
-    "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))",
-    "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(238, 130, 238, 1))"
-  ];
-
-  const [colorBg, setColorBg] = useState<string>(colorsQuoteText[0]);
+  const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
+  const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
 
   let percent_w1 = null;
   let percent_w2 = null;
-
-  if (countOne < 0) {
-    setCountOne(0);
-  };
-
-  if (countTwo < 0) {
-    setCountTwo(0);
-  };
 
   let total: number = countOne + countTwo;
   percent_w1 = (countOne * 100) / total;
   percent_w2 = (countTwo * 100) / total;
 
   const incrementOne = (): void => {
+    let i = countOne;
     if (countOne < 3) {
       setCountOne((count) => count += 1);
-    } else {
-      setCountOne((_count) => _count = 0);
-    }
-    let i = countOne + 1;
-    //console.log(i, "i")
-    if (i >= 0 && i < colorsQuoteText.length) {
-      setColorBg(colorsQuoteText[i])
-    } else {
-      setColorBg(colorsQuoteText[0])
+      setColorBgOne(colorPalettOne[i+1])
     }
   };
 
   const decrementOne = (): void => {
+    let j = countOne;
     if (countOne > 0 && countOne <= 3) {
       setCountOne((count) => count -= 1);
-    } else {
-      setCountOne((_count) => _count = 0);
-    }
-    let i = countOne - 1;
-    //console.log(i, "i")
-    if (i >= 0 && i < colorsQuoteText.length) {
-      setColorBg(colorsQuoteText[i])
-    } else {
-      setColorBg(colorsQuoteText[0])
+      setColorBgOne(colorPalettOne[j-1])
     }
   };
 
   const incrementTwo = (): void => {
+    let k = countTwo;
     if (countTwo < 3) {
       setCountTwo((count) => count += 1);
-    } else {
-      setCountTwo((_count) => _count = 0);
-    }
-    let j = countTwo + 1;
-    //console.log(j, "i")
-    if (j >= 0 && j < colorsQuoteText2.length) {
-      setColorBg(colorsQuoteText2[j])
-    } else {
-      setColorBg(colorsQuoteText2[0])
+      setColorBgTwo(colorPalettTwo[k+1])
     }
   };
 
   const decrementTwo = (): void => {
+    let l = countTwo;
     if (countTwo > 0 && countTwo <= 3) {
       setCountTwo((count) => count -= 1);
-    } else {
-      setCountTwo((_count) => _count = 0);
+      setColorBgTwo(colorPalettTwo[l-1])
     }
-    let j = countTwo - 1;
-    //console.log(j, "j")
-    if (j >= 0 && j < colorsQuoteText2.length) {
-      setColorBg(colorsQuoteText2[j])
-    } else {
-      setColorBg(colorsQuoteText2[0])
-    }
-  };
-
-  const displayQuote = (): void => {
-    setChangeQuote(!changeQuote);
   };
 
   const displayImg = (): void => {
     setChangeImg(!changeImg);
   };
 
-  const switcherImg = (): void => {
+  const handleHiddenImg = (): void => {
     setUrlImg("");
   };
 
-  const switcherQuote = (): void => {
+  const displayQuote = (): void => {
+    setChangeQuote(!changeQuote);
+  };
+
+  const handleHiddenQuote = (): void => {
     setData({content: ""});
   };
 
@@ -155,7 +109,7 @@ function App() {
           <div className="graph-in">
 
             <div className="para-quote" 
-              style={{background: `${colorBg}`}}
+              style={{background: `linear-gradient(30deg, ${colorBgOne}, ${colorBgTwo}`}}
             >
               {urlImg && data.content ? (
                   <div className="para-img">
@@ -170,7 +124,6 @@ function App() {
           
           </div>
         </div>
-
 
         <div className="panel-div">
 
@@ -194,9 +147,9 @@ function App() {
 
         <BtnPanel
           displayImg={displayImg}
-          switcherImg={switcherImg}
-          switcherQuote={switcherQuote}
+          handleHiddenImg={handleHiddenImg}
           displayQuote={displayQuote}
+          handleHiddenQuote={handleHiddenQuote}
         />
 
       </div>
