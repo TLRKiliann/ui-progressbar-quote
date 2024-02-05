@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import MotionCountainer from "./components/MotionCountainer";
+import CountainerCounter from './components/ContainerCounter';
+import BtnPanel from './components/BtnPanel';
 //import SecondComp from './components/SecondComp'
-import { motion } from "framer-motion";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
-import { FaArrowAltCircleRight } from "react-icons/fa";
-
 import './App.css'
 
 type DataProps = {
@@ -42,10 +41,10 @@ function App() {
   }, [changeImg]);
 
   const colorsQuoteText = [
-      "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
-      "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 255, 0, 1))",
-      "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(255, 255, 0, 1))",
-      "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(238, 130, 238, 1))"
+    "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 165, 0, 1))",
+    "linear-gradient(30deg, rgba(255, 69, 0, 1), rgba(255, 255, 0, 1))",
+    "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(255, 255, 0, 1))",
+    "linear-gradient(30deg, rgba(255, 165, 0, 1), rgba(238, 130, 238, 1))"
   ];
 
   const colorsQuoteText2 = [
@@ -53,7 +52,7 @@ function App() {
     "linear-gradient(30deg, rgba(255, 255, 0, 1), rgba(0, 255, 255, 1))",
     "linear-gradient(30deg, rgba(144, 238, 144, 1), rgba(0, 255, 255, 1))",
     "linear-gradient(30deg, rgba(0, 255, 255, 1), rgba(238, 130, 238, 1))"
-];
+  ];
 
   const [colorBg, setColorBg] = useState<string>(colorsQuoteText[0]);
 
@@ -78,10 +77,8 @@ function App() {
     } else {
       setCountOne((_count) => _count = 0);
     }
-
     let i = countOne + 1;
-    console.log(i, "i")
-
+    //console.log(i, "i")
     if (i >= 0 && i < colorsQuoteText.length) {
       setColorBg(colorsQuoteText[i])
     } else {
@@ -95,10 +92,8 @@ function App() {
     } else {
       setCountOne((_count) => _count = 0);
     }
-
     let i = countOne - 1;
-    console.log(i, "i")
-
+    //console.log(i, "i")
     if (i >= 0 && i < colorsQuoteText.length) {
       setColorBg(colorsQuoteText[i])
     } else {
@@ -112,10 +107,8 @@ function App() {
     } else {
       setCountTwo((_count) => _count = 0);
     }
-
     let j = countTwo + 1;
-    console.log(j, "i")
-
+    //console.log(j, "i")
     if (j >= 0 && j < colorsQuoteText2.length) {
       setColorBg(colorsQuoteText2[j])
     } else {
@@ -129,10 +122,8 @@ function App() {
     } else {
       setCountTwo((_count) => _count = 0);
     }
-
     let j = countTwo - 1;
-    console.log(j, "j")
-
+    //console.log(j, "j")
     if (j >= 0 && j < colorsQuoteText2.length) {
       setColorBg(colorsQuoteText2[j])
     } else {
@@ -183,122 +174,30 @@ function App() {
 
         <div className="panel-div">
 
-          <div className="motion-container">
-            <motion.div
-              className="dynamic-element"
-              style={{ 
-                width: `${percent_w1}%`,
-                height: '25px',
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <p className="para-motion1">
-                {percent_w1 ? percent_w1.toFixed(2) : 0}%
-              </p>
-            </motion.div>
+          <MotionCountainer 
+            percent_w1={percent_w1}
+            percent_w2={percent_w2}
+          />
 
-            <motion.div
-              className="dynamic-element"
-              style={{
-                width: `${percent_w2}%`,
-                height: '25px',
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <p className="para-motion2">
-                {percent_w2 ? percent_w2.toFixed(2) : 0}%
-              </p>
-            </motion.div>
-          </div>
-
-
-          <div className="container-counter">
-
-            <div className="box-countOne">
-              <div className="div-p" style={{color: "orange"}}>
-                <p>
-                  Count: {countOne}
-                </p>
-                <p>
-                  Percent: {percent_w1 ? percent_w1.toFixed(2) : "0"}%
-                </p>
-              </div>
-
-              <button type="button" onClick={incrementOne}
-                className="button"
-              >
-                <FaArrowAltCircleLeft size={24} />
-              </button>
-
-              <button type="button" onClick={decrementOne}
-                className="button"
-              >
-                <FaArrowAltCircleRight size={24} />
-              </button>
-
-            </div>
-
-            <div className="box-countTwo">
-              <div className="div-p" style={{color: "cyan"}}>
-                <p>
-                  Count: {countTwo}
-                </p>
-                <p>
-                  Percent: {percent_w2 ? percent_w2.toFixed(2) : "0"}%
-                </p>
-              </div>
-
-              <button type="button" onClick={incrementTwo}
-                className="button"
-              >
-                <FaArrowAltCircleLeft size={24} />
-
-              </button>
-
-              <button type="button" onClick={decrementTwo}
-                className="button"
-              >
-                <FaArrowAltCircleRight size={24} />
-              </button>
-
-            </div>
-
-          </div>
+          <CountainerCounter
+            countOne={countOne}
+            countTwo={countTwo}
+            percent_w1={percent_w1}
+            percent_w2={percent_w2}
+            incrementOne={incrementOne} 
+            decrementOne={decrementOne} 
+            incrementTwo={incrementTwo} 
+            decrementTwo={decrementTwo}
+          />
 
         </div>
 
-        <div className="button-panel">
-
-          <button type="button" onClick={displayImg}
-            className="button"
-          >
-            Display/Change img
-          </button>
-
-          <button type="button" onClick={switcherImg}
-            className="button"
-          >
-            Hide img
-          </button>
-
-          <button type="button" onClick={switcherQuote}
-            className="button"
-          >
-            Hide quote
-          </button>
-
-
-          <button type="button" onClick={displayQuote}
-            className="button"
-          >
-            Display/Change quote
-          </button>
-
-        </div>
+        <BtnPanel
+          displayImg={displayImg}
+          switcherImg={switcherImg}
+          switcherQuote={switcherQuote}
+          displayQuote={displayQuote}
+        />
 
       </div>
         
