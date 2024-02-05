@@ -103,12 +103,13 @@ main {
 }
 
 .button {
+  display: flex;
   font-weight: bold;
   cursor: pointer;
   background-color: royalblue;
   border: none;
   border-radius: 3px;
-  padding: 7px 30px;
+  padding: 10px 30px;
   transform: scale(1.0);
   transition: transform ease 0.25s;
 }

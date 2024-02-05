@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 //import SecondComp from './components/SecondComp'
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+
 import './App.css'
 
 type DataProps = {
@@ -73,7 +76,7 @@ function App() {
     if (countOne < 3) {
       setCountOne((count) => count += 1);
     } else {
-      setCountOne((count) => count = 0);
+      setCountOne((_count) => _count = 0);
     }
 
     let i = countOne + 1;
@@ -90,7 +93,7 @@ function App() {
     if (countOne > 0 && countOne <= 3) {
       setCountOne((count) => count -= 1);
     } else {
-      setCountOne((count) => count = 0);
+      setCountOne((_count) => _count = 0);
     }
 
     let i = countOne - 1;
@@ -228,13 +231,13 @@ function App() {
               <button type="button" onClick={incrementOne}
                 className="button"
               >
-                Add
+                <FaArrowAltCircleLeft size={24} />
               </button>
 
               <button type="button" onClick={decrementOne}
                 className="button"
               >
-                Sub
+                <FaArrowAltCircleRight size={24} />
               </button>
 
             </div>
@@ -252,13 +255,14 @@ function App() {
               <button type="button" onClick={incrementTwo}
                 className="button"
               >
-                Add
+                <FaArrowAltCircleLeft size={24} />
+
               </button>
 
               <button type="button" onClick={decrementTwo}
                 className="button"
               >
-                Sub
+                <FaArrowAltCircleRight size={24} />
               </button>
 
             </div>
