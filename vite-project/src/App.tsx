@@ -12,8 +12,6 @@ function App() {
 
   const [data, setData] = useState<DataProps>({content: ""});
   const [urlImg, setUrlImg] = useState<string>("");
-  console.log(typeof urlImg, "type of url")
-
   const [countOne, setCountOne] = useState<number>(0);
   const [countTwo, setCountTwo] = useState<number>(0);
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
@@ -40,11 +38,11 @@ function App() {
     return () => console.log("useEffect clean-up (2)!");
   }, [changeImg]);
 
+  const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
+
   let colorPalettOne: string[] = ["yellow", "orange", "orangered", "red"];
   let colorPalettTwo: string[] = ["yellow", "orange", "orangered", "red"];
 
-  const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
-  
   if (selectedColorsPalette === "yellowRed") {
     colorPalettOne = ["yellow", "orange", "orangered", "red"];
     colorPalettTwo = ["yellow", "orange", "orangered", "red"];
@@ -55,6 +53,25 @@ function App() {
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
   const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
+
+  useEffect(() => {
+    const callerImg = () => {
+      if (selectedColorsPalette === "yellowRed") {
+        setCountOne(0);
+        setCountTwo(0);
+        setColorBgOne("yellow");
+        setColorBgTwo("yellow");
+      } else {
+        setCountOne(0);
+        setCountTwo(0);
+        setColorBgOne("cyan");
+        setColorBgTwo("cyan");
+      }
+    }
+    callerImg();
+    return () => console.log("useEffect clean-up (2)!");
+  }, [selectedColorsPalette]);
+
 
   let percent_w1 = null;
   let percent_w2 = null;
@@ -112,7 +129,7 @@ function App() {
   };
 
   const handleChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedColorsPalette(e.target.value)
+    setSelectedColorsPalette(e.target.value);
   };
 
   return (
@@ -141,11 +158,12 @@ function App() {
 
         <div className="panel-div">
 
-          <label>
+          <label className="label-select">
             Pick a colors palette:
             <select 
               value={selectedColorsPalette} 
-              onChange={(e) => handleChangeOptions(e)} 
+              onChange={(e) => handleChangeOptions(e)}
+              className="select"
             >
               <option value="yellowRed">Yellow-Red</option>
               <option value="cyanViolet">Cyan-Violet</option>
