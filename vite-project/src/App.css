@@ -34,7 +34,7 @@ main {
   justify-content: center;
   width: 900px;
   height: 400px;
-  background: #232323;
+  background: #161616;
   border-radius: 12px;
   margin: auto;
   margin-bottom: 20px;
@@ -95,7 +95,7 @@ main {
 
 .panel-div {
   width: 900px;
-  background: #232323;
+  background: #161616;
   border-radius: 12px;
   margin: auto;
   padding: 40px;
@@ -185,7 +185,7 @@ main {
   align-items: center;
   justify-content: space-between;
   width: 900px;
-  background: #232323;
+  background: #161616;
   margin-top: 20px;
   padding: 40px 40px;
   border-radius: 12px;
