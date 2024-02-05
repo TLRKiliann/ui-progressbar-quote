@@ -9,7 +9,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
 }
 
 .error {
@@ -21,11 +20,11 @@ main {
 }
 
 .main-screen {
-  height: 80vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 
 .frame {
@@ -33,22 +32,12 @@ main {
   align-items: center;
   justify-content: center;
   width: 900px;
-  height: 400px;
-  background: #161616;
+  height: 500px;
+  background: #303030;
   border-radius: 12px;
   margin: auto;
   margin-bottom: 20px;
   padding: 60px 40px;
-}
-
-.graph-in {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 900px;
-  height: 400px;
-  background: #000;
-  margin: auto;
 }
 
 /* Text de la frame en couleur */
@@ -57,12 +46,12 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 850px;
+  height: 500px;
   text-align: center;
   font-size: x-large;
   font-weight: bold;
-  color: #333;
+  color: #303030;
   padding: 20px;
   border-radius: 7px;
   box-shadow: inset 0 0 10px black;
@@ -70,40 +59,75 @@ main {
 
 .para-img {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img {
+  object-fit: cover;
   border-radius: 7px;
   box-shadow: 0 0 4px rgba(50, 50, 50, 0.8);
 }
-
-/*background: -webkit-gradient(30deg, rgba(0, 255, 255, 1), rgba(255, 165, 0, 1));*/
-/*background-clip: text;
--webkit-text-fill-color: transparent;
-*/
 
 .layer-quote {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 840px;
+  width: 800px;
+  height: 450px;
   margin: auto;
-  height: 400px;
   color: whitesmoke;
 }
 
 .panel-div {
   width: 900px;
-  background: #161616;
+  background: #303030;
   border-radius: 12px;
-  margin: auto;
+  margin: 0px auto;
   padding: 40px;
   padding-bottom: 20px;
 }
 
-.react-select {
-  color: #333;
+.label-select {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: orange;
+}
+
+.select {
+  font-size: 1.0rem;
+  background-color: dimgray;
+  color: #f5f5f5;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 5px 10px;
+}
+
+.btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: royalblue;
+  border: none;
+  border-radius: 100%;
+  padding: 10px 10px;
+  transform: scale(1.0);
+  transition: transform ease 0.2s; 
+}
+
+.btn-circle:hover {
+  background-color: dodgerblue;
+  color: blue;
+  transform: scale(1.05);
+}
+
+.btn-circle:active {
+  background-color: steelblue;
+  color: lightgreen;
+  transform: scale(0.95);
 }
 
 .button {
@@ -142,7 +166,7 @@ main {
   text-align: center;
   background: linear-gradient(30deg, rgba(255, 255, 0, 1) 10%,rgba(255, 69, 0, 1) 90%);
   border-radius: 25px 25px 25px 25px;
-  color: #333;
+  color: #303030;
   margin-right: -5px
 }
 
@@ -151,7 +175,7 @@ main {
   text-align: center;
   background: linear-gradient(30deg, rgba(255, 69, 0, 1) 10%,rgba(255, 255, 0, 1) 90%);
   border-radius: 25px 25px 25px 25px;
-  color: #333;
+  color: #303030;
   margin-left: -5px
 }
 
@@ -174,15 +198,22 @@ main {
 .box-countOne {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   width: 60%;
   padding: 10px;
+}
+
+.div-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
 }
 
 .box-countTwo {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   width: 60%;
   padding: 10px;
 }
@@ -192,7 +223,7 @@ main {
   align-items: center;
   justify-content: space-between;
   width: 900px;
-  background: #161616;
+  background: #303030;
   margin-top: 20px;
   padding: 40px 40px;
   border-radius: 12px;

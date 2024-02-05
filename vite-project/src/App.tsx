@@ -47,8 +47,8 @@ function App() {
     colorPalettOne = ["yellow", "orange", "orangered", "red"];
     colorPalettTwo = ["yellow", "orange", "orangered", "red"];
   } else if (selectedColorsPalette === "cyanViolet") {
-    colorPalettOne = ["cyan", "lightblue", "dodgerblue", "blue"];
-    colorPalettTwo = ["cyan", "lightblue", "dodgerblue", "blue"];
+    colorPalettOne = ["cyan", "deepskyblue", "dodgerblue", "violet"];
+    colorPalettTwo = ["cyan", "deepskyblue", "dodgerblue", "violet"];
   };
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
@@ -137,7 +137,6 @@ function App() {
       <div className="main-screen">
 
         <div className="frame">
-          <div className="graph-in">
 
             <div className="para-quote" 
               style={{background: `linear-gradient(30deg, ${colorBgOne}, ${colorBgTwo}`}}
@@ -145,22 +144,21 @@ function App() {
               {urlImg && data.content ? (
                 <div className="para-img">
                   <p className="layer-quote">{data?.content}</p>
-                  <img src={urlImg} width={840} height={380} alt="img" className="img" />
+                  <img src={urlImg} width={800} height={450} alt="img" className="img" />
                 </div>
                 ) : data?.content ? data.content : urlImg ? (
-                  <img src={urlImg} width={840} height={380} alt="img" className="img" />
+                  <img src={urlImg} width={800} height={450} alt="img" className="img" />
                 ) : null
               }
             </div>
           
-          </div>
         </div>
 
         <div className="panel-div">
 
           <label className="label-select">
             Pick a colors palette:
-            <select 
+            <select
               value={selectedColorsPalette} 
               onChange={(e) => handleChangeOptions(e)}
               className="select"
