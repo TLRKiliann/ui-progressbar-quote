@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
-//import SecondComp from './components/SecondComp'
 import './App.css'
 
 type DataProps = {
@@ -13,6 +12,7 @@ function App() {
 
   const [data, setData] = useState<DataProps>({content: ""});
   const [urlImg, setUrlImg] = useState<string>("");
+  console.log(typeof urlImg, "type of url")
 
   const [countOne, setCountOne] = useState<number>(0);
   const [countTwo, setCountTwo] = useState<number>(0);
@@ -40,8 +40,18 @@ function App() {
     return () => console.log("useEffect clean-up (2)!");
   }, [changeImg]);
 
-  const colorPalettOne: string[] = ["yellow", "orange", "orangered", "red"];
-  const colorPalettTwo: string[] = ["yellow", "orange", "orangered", "red"];
+  let colorPalettOne: string[] = ["yellow", "orange", "orangered", "red"];
+  let colorPalettTwo: string[] = ["yellow", "orange", "orangered", "red"];
+
+  const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
+  
+  if (selectedColorsPalette === "yellowRed") {
+    colorPalettOne = ["yellow", "orange", "orangered", "red"];
+    colorPalettTwo = ["yellow", "orange", "orangered", "red"];
+  } else if (selectedColorsPalette === "cyanViolet") {
+    colorPalettOne = ["cyan", "lightblue", "dodgerblue", "blue"];
+    colorPalettTwo = ["cyan", "lightblue", "dodgerblue", "blue"];
+  };
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
   const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
@@ -101,6 +111,10 @@ function App() {
     setData({content: ""});
   };
 
+  const handleChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedColorsPalette(e.target.value)
+  };
+
   return (
     <main>
       <div className="main-screen">
@@ -112,10 +126,10 @@ function App() {
               style={{background: `linear-gradient(30deg, ${colorBgOne}, ${colorBgTwo}`}}
             >
               {urlImg && data.content ? (
-                  <div className="para-img">
-                    <p className="layer-quote">{data?.content}</p>
-                    <img src={urlImg} width={840} height={380} alt="img" className="img" />
-                  </div>
+                <div className="para-img">
+                  <p className="layer-quote">{data?.content}</p>
+                  <img src={urlImg} width={840} height={380} alt="img" className="img" />
+                </div>
                 ) : data?.content ? data.content : urlImg ? (
                   <img src={urlImg} width={840} height={380} alt="img" className="img" />
                 ) : null
@@ -126,6 +140,17 @@ function App() {
         </div>
 
         <div className="panel-div">
+
+          <label>
+            Pick a colors palette:
+            <select 
+              value={selectedColorsPalette} 
+              onChange={(e) => handleChangeOptions(e)} 
+            >
+              <option value="yellowRed">Yellow-Red</option>
+              <option value="cyanViolet">Cyan-Violet</option>
+            </select>
+          </label>
 
           <MotionCountainer 
             percent_w1={percent_w1}

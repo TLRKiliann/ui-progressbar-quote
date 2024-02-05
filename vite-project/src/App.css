@@ -102,6 +102,10 @@ main {
   padding-bottom: 20px;
 }
 
+.react-select {
+  color: #333;
+}
+
 .button {
   display: flex;
   font-weight: bold;
