@@ -1,5 +1,6 @@
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import '../App.css';
 
 type CountainerCounterProps = {
     countOne: number;
@@ -20,7 +21,7 @@ export default function ContainerCounter({
     incrementOne,
     decrementOne,
     incrementTwo,
-    decrementTwo }: CountainerCounterProps) {
+    decrementTwo}: CountainerCounterProps) {
     return (
         <div className="container-counter">
 
@@ -34,17 +35,21 @@ export default function ContainerCounter({
                     </p>
                 </div>
 
-                <button type="button" onClick={incrementOne}
-                    className="button"
-                >
-                    <FaArrowAltCircleLeft size={24} />
-                </button>
+                <div className="div-btn">
 
-                <button type="button" onClick={decrementOne}
-                    className="button"
-                >
-                    <FaArrowAltCircleRight size={24} />
-                </button>
+                    <button type="button" onClick={incrementOne}
+                        className="btn-circle"
+                    >
+                        <FaArrowAltCircleLeft size={24} />
+                    </button>
+
+                    <button type="button" onClick={decrementOne}
+                        className="btn-circle"
+                    >
+                        <FaArrowAltCircleRight size={24} />
+                    </button>
+
+                </div>
 
             </div>
 
@@ -58,17 +63,21 @@ export default function ContainerCounter({
                     </p>
                 </div>
 
-                <button type="button" onClick={incrementTwo}
-                    className="button"
-                >
-                    <FaArrowAltCircleLeft size={24} />
-                </button>
+                <div className="div-btn">
 
-                <button type="button" onClick={decrementTwo}
-                    className="button"
-                >
-                    <FaArrowAltCircleRight size={24} />
-                </button>
+                    <button type="button" onClick={incrementTwo}
+                        className="btn-circle"
+                    >
+                        <FaArrowAltCircleLeft size={24} />
+                    </button>
+
+                    <button type="button" onClick={decrementTwo}
+                        className="btn-circle"
+                    >
+                        <FaArrowAltCircleRight size={24} />
+                    </button>
+
+                </div>
 
             </div>
 

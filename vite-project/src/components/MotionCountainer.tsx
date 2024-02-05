@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import '../App.css';
 
 type MotionProps = {
     percent_w1: number;

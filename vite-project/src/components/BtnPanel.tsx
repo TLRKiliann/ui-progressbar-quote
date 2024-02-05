@@ -1,3 +1,5 @@
+import '../App.css';
+
 type ButtonProps = {
     displayImg: () => void;
     handleHiddenImg: () => void;
