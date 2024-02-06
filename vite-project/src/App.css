@@ -113,42 +113,52 @@ main {
   background-color: royalblue;
   border: none;
   border-radius: 100%;
+  box-shadow: 0 0 10px #202020;
   padding: 10px 10px;
   transform: scale(1.0);
-  transition: transform ease 0.2s; 
+  transition: transform-all ease 0.2s; 
 }
 
 .btn-circle:hover {
   background-color: dodgerblue;
-  color: blue;
+  box-shadow: 0 0 20px #202020;
+  color: navy;
   transform: scale(1.05);
 }
 
 .btn-circle:active {
   background-color: steelblue;
+  box-shadow: 0 0 0px #202020;
   color: lightgreen;
   transform: scale(0.95);
 }
 
 .button {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.0rem;
   font-weight: bold;
   cursor: pointer;
   background-color: royalblue;
   border: none;
   border-radius: 3px;
-  padding: 10px 30px;
+  box-shadow: 0 0 10px #202020;
+  padding: 15px 30px;
   transform: scale(1.0);
-  transition: transform ease 0.25s;
+  transition: transform all ease 0.2s;
 }
 
 .button:hover {
   background-color: dodgerblue;
+  box-shadow: 0 0 20px #202020;
+  color: navy;
   transform: scale(1.05);
 }
 
 .button:active {
   background-color: steelblue;
+  box-shadow: 0 0 0px #202020;
   transform: scale(0.95);
 }
 
@@ -164,7 +174,6 @@ main {
   content: "";
   width: 100%;
   text-align: center;
-  background: linear-gradient(30deg, rgba(255, 255, 0, 1) 10%,rgba(255, 69, 0, 1) 90%);
   border-radius: 25px 25px 25px 25px;
   color: #303030;
   margin-right: -5px
@@ -173,7 +182,6 @@ main {
 .para-motion2 {
   width: 100%;
   text-align: center;
-  background: linear-gradient(30deg, rgba(255, 69, 0, 1) 10%,rgba(255, 255, 0, 1) 90%);
   border-radius: 25px 25px 25px 25px;
   color: #303030;
   margin-left: -5px
