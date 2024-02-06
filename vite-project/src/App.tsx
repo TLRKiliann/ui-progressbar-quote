@@ -1,48 +1,46 @@
 import { useState, useEffect } from "react";
+import type { PhotoProps } from "./lib/definitions";
+import { photos } from './lib/data';
 import FrameComp from "./components/FrameComp";
 import SelectComp from "./components/SelectComp";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
-import palmerImg from '/images/palmer.jpg';
-import beachImg from '/images/beach.jpg';
-import landscapeImg from '/images/landscape.jpg';
 import './App.css'
 
 type DataProps = {
   content: string;
 };
 
-type PhotoProps = {
-  id: number;
-  name: string;
-}
+type HollyBoolyProps = {
+  changeQuote: boolean;
+  changeImg: boolean;
+  boolBoxImg: boolean;
+};
 
 function App() {
 
   const [data, setData] = useState<DataProps>({content: ""});
   const [urlImg, setUrlImg] = useState<string>("");
+  
   const [countOne, setCountOne] = useState<number>(0);
   const [countTwo, setCountTwo] = useState<number>(0);
+
+  const [hollyBooly, setHollyBooly] = useState<HollyBoolyProps>(
+    {
+      changeQuote: false,
+      changeImg: false,
+      boolBoxImg: false
+    }
+  );
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
+  /*
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [boolBoxImg, setBoolBoxImg] = useState<boolean>(false);
-
-  const photos: PhotoProps[] = [
-    {
-      id: 1,
-      name: palmerImg
-    },
-    {
-      id: 2,
-      name: beachImg
-    },
-    {
-      id: 3,
-      name: landscapeImg
-    }
-  ];
+  */
 
   useEffect(() => {
     setIsLoading(true);
@@ -55,7 +53,7 @@ function App() {
     }
     callerQuote();
     return () => console.log("Clean-up effect for quote done");
-  }, [changeQuote]);
+  }, [hollyBooly.changeQuote]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,7 +65,7 @@ function App() {
     }
     callerImg();
     return () => console.log("Clean-up effect for img done");
-  }, [changeImg]);
+  }, [hollyBooly.changeImg]);
 
   const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
 
@@ -84,8 +82,8 @@ function App() {
     colorPalettOne = ["pink", "hotpink", "violet", "blueviolet"];
     colorPalettTwo = ["pink", "hotpink", "violet", "blueviolet"];
   } else if (selectedColorsPalette === "yellowCyan") {
-    colorPalettOne = ["yellow", "orange", "orangered", "red"];
-    colorPalettTwo = ["cyan", "aqua", "turquoise", "violet"];
+    colorPalettOne = ["yellow", "orange", "orangered", "blueviolet"];
+    colorPalettTwo = ["cyan", "lightgreen", "turquoise", "violet"];
   }
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
@@ -174,7 +172,8 @@ function App() {
   };
 
   const displayImg = (): void => {
-    setChangeImg(!changeImg);
+    //setChangeImg(!changeImg);
+    setHollyBooly({...hollyBooly, changeImg: !hollyBooly.changeImg})
   };
 
   const handleHiddenImg = (): void => {
@@ -182,7 +181,8 @@ function App() {
   };
 
   const displayQuote = (): void => {
-    setChangeQuote(!changeQuote);
+    //setChangeQuote(!changeQuote);
+    setHollyBooly({...hollyBooly, changeQuote: !hollyBooly.changeQuote})
   };
 
   const handleHiddenQuote = (): void => {
@@ -194,15 +194,15 @@ function App() {
   };
 
   const handleBoolBoxImg = () => {
-    setBoolBoxImg(!boolBoxImg);
+    //setBoolBoxImg(!boolBoxImg);
+    setHollyBooly({...hollyBooly, boolBoxImg: !hollyBooly.boolBoxImg})
   };
 
   const handleDownloadImg = (id: number) => {
     const findById = photos.find((p) => p.id === id);
-    console.log(findById);
     const nameImg = findById?.name;
-    const mappToFindImg = photos.map((m) => m.name === nameImg ? setUrlImg(m.name) : m);
-    return mappToFindImg;
+    const mappToFindNameImg = photos.map((m) => m.name === nameImg ? setUrlImg(m.name) : m);
+    return mappToFindNameImg;
   };
 
   return (
@@ -226,7 +226,7 @@ function App() {
               handleChangeOptions={handleChangeOptions}
             />
 
-            {boolBoxImg === true ? (
+            {hollyBooly.boolBoxImg === true ? (
               <div className="container-img">
                 <div className="box-img">
 
