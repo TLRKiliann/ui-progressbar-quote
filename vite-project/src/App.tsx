@@ -56,7 +56,7 @@ function App() {
     colorPalettTwo = ["pink", "hotpink", "violet", "blueviolet"];
   } else if (selectedColorsPalette === "yellowCyan") {
     colorPalettOne = ["yellow", "orange", "orangered", "red"];
-    colorPalettTwo = ["cyan", "deepskyblue", "dodgerblue", "violet"];
+    colorPalettTwo = ["cyan", "aqua", "turquoise", "violet"];
   }
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
@@ -91,8 +91,8 @@ function App() {
             setColorBgTwo("cyan");
             break;
           default:
-            setCountOne(0);
-            setCountTwo(0);
+            setCountOne(1);
+            setCountTwo(1);
             setColorBgOne("yellow");
             setColorBgTwo("yellow");
             break;
