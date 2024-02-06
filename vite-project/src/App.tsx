@@ -49,7 +49,13 @@ function App() {
   } else if (selectedColorsPalette === "cyanViolet") {
     colorPalettOne = ["cyan", "deepskyblue", "dodgerblue", "violet"];
     colorPalettTwo = ["cyan", "deepskyblue", "dodgerblue", "violet"];
-  };
+  } else if (selectedColorsPalette === "pinkViolet") {
+    colorPalettOne = ["pink", "hotpink", "violet", "blueviolet"];
+    colorPalettTwo = ["pink", "hotpink", "violet", "blueviolet"];
+  } else if (selectedColorsPalette === "yellowCyan") {
+    colorPalettOne = ["yellow", "orange", "orangered", "red"];
+    colorPalettTwo = ["cyan", "deepskyblue", "dodgerblue", "violet"];
+  }
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
   const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
@@ -61,12 +67,22 @@ function App() {
         setCountTwo(0);
         setColorBgOne("yellow");
         setColorBgTwo("yellow");
-      } else {
+      } else if (selectedColorsPalette === "cyanViolet") {
         setCountOne(0);
         setCountTwo(0);
         setColorBgOne("cyan");
         setColorBgTwo("cyan");
-      }
+      } else if (selectedColorsPalette === "pinkViolet") {
+        setCountOne(0);
+        setCountTwo(0);
+        setColorBgOne("pink");
+        setColorBgTwo("pink");
+      } else if (selectedColorsPalette === "yellowCyan") {
+        setCountOne(0);
+        setCountTwo(0);
+        setColorBgOne("yellow");
+        setColorBgTwo("cyan");
+      }      
     }
     callerImg();
     return () => console.log("useEffect clean-up (2)!");
@@ -165,6 +181,8 @@ function App() {
             >
               <option value="yellowRed">Yellow-Red</option>
               <option value="cyanViolet">Cyan-Violet</option>
+              <option value="pinkViolet">Pink-Violet</option>
+              <option value="yellowCyan">Yellow-Cyan</option>
             </select>
           </label>
 
