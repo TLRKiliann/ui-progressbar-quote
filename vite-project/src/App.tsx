@@ -5,11 +5,18 @@ import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
 import palmerImg from '/images/palmer.jpg';
+import beachImg from '/images/beach.jpg';
+import landscapeImg from '/images/landscape.jpg';
 import './App.css'
 
 type DataProps = {
   content: string;
 };
+
+type PhotoProps = {
+  id: number;
+  name: string;
+}
 
 function App() {
 
@@ -20,6 +27,22 @@ function App() {
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [boolBoxImg, setBoolBoxImg] = useState<boolean>(false);
+
+  const photos: PhotoProps[] = [
+    {
+      id: 1,
+      name: palmerImg
+    },
+    {
+      id: 2,
+      name: beachImg
+    },
+    {
+      id: 3,
+      name: landscapeImg
+    }
+  ];
 
   useEffect(() => {
     setIsLoading(true);
@@ -170,9 +193,17 @@ function App() {
     setSelectedColorsPalette(e.target.value);
   };
 
-  const handleDownloadImg = () => {
-    setUrlImg(palmerImg)
-  }
+  const handleBoolBoxImg = () => {
+    setBoolBoxImg(!boolBoxImg);
+  };
+
+  const handleDownloadImg = (id: number) => {
+    const findById = photos.find((p) => p.id === id);
+    console.log(findById);
+    const nameImg = findById?.name;
+    const mappToFindImg = photos.map((m) => m.name === nameImg ? setUrlImg(m.name) : m);
+    return mappToFindImg;
+  };
 
   return (
     <main>
@@ -195,9 +226,25 @@ function App() {
               handleChangeOptions={handleChangeOptions}
             />
 
+            {boolBoxImg === true ? (
+              <div className="container-img">
+                <div className="box-img">
+
+                  <span onClick={handleBoolBoxImg} className="close-span">X</span>
+                  <h4>Download an image: </h4>
+              
+                  {photos.map((photo: PhotoProps) => (
+                    <span key={photo.id} onClick={() => handleDownloadImg(photo.id)}>➡️ {photo.name}</span>
+                  ))}
+
+                </div>
+              </div>
+              ) : null
+            }
+
             <div>
-              <button type="button" onClick={handleDownloadImg}>
-                Download public IMG
+              <button type="button" onClick={handleBoolBoxImg}>
+                Open img box
               </button>
             </div>
 

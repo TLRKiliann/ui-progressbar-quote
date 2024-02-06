@@ -31,6 +31,7 @@ main {
   width: 900px;
   background: hsl(0, 0%, 19%);
   border-radius: 12px;
+  box-shadow: inset 0 0 7px hsl(0, 0%, 0%);
   margin: 0px auto;
   padding: 40px;
 }
@@ -40,5 +41,50 @@ main {
   align-items: center;
   justify-content: space-between;
   background-color: hsl(0, 0%, 15%);
+  border-radius: 7px;
+  box-shadow: inset 0 0 7px hsl(0, 0%, 7%);
   padding: 20px;
+}
+
+.container-img {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  z-index: 10;
+}
+
+.box-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  background-color: hsl(0, 0%, 0%);
+  margin: auto;
+  padding: 20px;
+}
+
+.box-img > .close-span {
+  display: flex;
+  justify-content: end;
+  color: #f5f5f5;
+}
+
+.box-img h4 {
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.box-img span {
+  cursor: pointer;
+  color: deepskyblue;
+}
+
+.box-img span:hover {
+  cursor: pointer;
+  color: white;
 }

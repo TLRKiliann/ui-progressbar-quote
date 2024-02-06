@@ -69,7 +69,6 @@ export default function ContainerCounter({
                         className="btn-circle"
                     >
                         <FaArrowAltCircleLeft size={24} className="react-icons" />
-                        {/*style={{marginBottom: "-3px"}} */}
                     </button>
 
                     <button type="button" onClick={decrementTwo}
