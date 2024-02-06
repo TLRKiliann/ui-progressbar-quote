@@ -18,6 +18,7 @@ function App() {
   const [countTwo, setCountTwo] = useState<number>(0);
   const [changeQuote, setChangeQuote] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const callerQuote = () => {
@@ -31,13 +32,15 @@ function App() {
   }, [changeQuote]);
 
   useEffect(() => {
+    setIsLoading(true);
     const callerImg = () => {
       fetch("https://picsum.photos/1600/1000")
         .then((res) => setUrlImg(res.url))
         .catch((error) => console.log(error?.message));
+        setIsLoading(false)
     }
     callerImg();
-    return () => console.log("useEffect clean-up (2)!");
+    return () => console.log("useEffect clean-up (2)!")
   }, [changeImg]);
 
   const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
@@ -171,12 +174,13 @@ function App() {
         <FrameComp 
           colorBgOne={colorBgOne}
           colorBgTwo={colorBgTwo}
+          isLoading={isLoading}
           urlImg={urlImg}
           data={data}
         />
 
         <div className="panel-div">
-
+          
           <SelectComp
             selectedColorsPalette={selectedColorsPalette}
             handleChangeOptions={handleChangeOptions}
