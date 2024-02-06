@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import FrameComp from "./components/FrameComp";
+import SelectComp from "./components/SelectComp";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
@@ -62,32 +64,46 @@ function App() {
 
   useEffect(() => {
     const callerImg = () => {
-      if (selectedColorsPalette === "yellowRed") {
-        setCountOne(0);
-        setCountTwo(0);
-        setColorBgOne("yellow");
-        setColorBgTwo("yellow");
-      } else if (selectedColorsPalette === "cyanViolet") {
-        setCountOne(0);
-        setCountTwo(0);
-        setColorBgOne("cyan");
-        setColorBgTwo("cyan");
-      } else if (selectedColorsPalette === "pinkViolet") {
-        setCountOne(0);
-        setCountTwo(0);
-        setColorBgOne("pink");
-        setColorBgTwo("pink");
-      } else if (selectedColorsPalette === "yellowCyan") {
-        setCountOne(0);
-        setCountTwo(0);
-        setColorBgOne("yellow");
-        setColorBgTwo("cyan");
-      }      
+      if (selectedColorsPalette !== undefined) {
+        switch (selectedColorsPalette) {
+          case "yellowRed":
+            setCountOne(0);
+            setCountTwo(0);
+            setColorBgOne("yellow");
+            setColorBgTwo("yellow");
+            break;
+          case "cyanViolet":
+            setCountOne(0);
+            setCountTwo(0);
+            setColorBgOne("cyan");
+            setColorBgTwo("cyan");
+            break;
+          case "pinkViolet":
+            setCountOne(0);
+            setCountTwo(0);
+            setColorBgOne("pink");
+            setColorBgTwo("pink");
+            break;
+          case "yellowCyan":
+            setCountOne(0);
+            setCountTwo(0);
+            setColorBgOne("yellow");
+            setColorBgTwo("cyan");
+            break;
+          default:
+            setCountOne(0);
+            setCountTwo(0);
+            setColorBgOne("yellow");
+            setColorBgTwo("yellow");
+            break;
+        }
+      } else {
+        return console.log("Error with select option value");
+      }
     }
     callerImg();
-    return () => console.log("useEffect clean-up (2)!");
+    return () => console.log("useEffect clean-up (3)!");
   }, [selectedColorsPalette]);
-
 
   let percent_w1 = null;
   let percent_w2 = null;
@@ -152,43 +168,25 @@ function App() {
     <main>
       <div className="main-screen">
 
-        <div className="frame">
-
-            <div className="para-quote" 
-              style={{background: `linear-gradient(30deg, ${colorBgOne}, ${colorBgTwo}`}}
-            >
-              {urlImg && data.content ? (
-                <div className="para-img">
-                  <p className="layer-quote">{data?.content}</p>
-                  <img src={urlImg} width={800} height={450} alt="img" className="img" />
-                </div>
-                ) : data?.content ? data.content : urlImg ? (
-                  <img src={urlImg} width={800} height={450} alt="img" className="img" />
-                ) : null
-              }
-            </div>
-          
-        </div>
+        <FrameComp 
+          colorBgOne={colorBgOne}
+          colorBgTwo={colorBgTwo}
+          urlImg={urlImg}
+          data={data}
+        />
 
         <div className="panel-div">
 
-          <label className="label-select">
-            Pick a colors palette:
-            <select
-              value={selectedColorsPalette} 
-              onChange={(e) => handleChangeOptions(e)}
-              className="select"
-            >
-              <option value="yellowRed">Yellow-Red</option>
-              <option value="cyanViolet">Cyan-Violet</option>
-              <option value="pinkViolet">Pink-Violet</option>
-              <option value="yellowCyan">Yellow-Cyan</option>
-            </select>
-          </label>
+          <SelectComp
+            selectedColorsPalette={selectedColorsPalette}
+            handleChangeOptions={handleChangeOptions}
+          />
 
           <MotionCountainer 
             percent_w1={percent_w1}
             percent_w2={percent_w2}
+            colorBgOne={colorBgOne}
+            colorBgTwo={colorBgTwo}
           />
 
           <CountainerCounter
