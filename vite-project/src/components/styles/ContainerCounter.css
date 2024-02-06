@@ -1,0 +1,71 @@
+.container-counter {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    font-size: larger;
+}
+
+.box-countOne {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    padding: 10px;
+}
+
+.box-countTwo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    padding: 10px;
+}
+
+.div-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+}
+
+.div-p {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-p p {
+    margin: auto 0px;
+}
+
+.btn-circle {
+    font-weight: bold;
+    cursor: pointer;
+    background-color: royalblue;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 0 10px #202020;
+    padding: 10px 10px;
+    transform: scale(1.0);
+    -webkit-transition: -webkit-transform 0.25s;
+    transition: transform 0.25s;
+}
+  
+.btn-circle:hover {
+    background-color: dodgerblue;
+    box-shadow: 0 0 20px #202020;
+    color: navy;
+    transform: scale(1.05);
+}
+  
+.btn-circle:active {
+    background-color: steelblue;
+    box-shadow: 0 0 0px #202020;
+    color: lightgreen;
+    transform: scale(0.95);
+}
+  
+.react-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

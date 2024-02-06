@@ -1,0 +1,37 @@
+.button-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 900px;
+    background: #303030;
+    margin-top: 20px;
+    padding: 40px 40px;
+    border-radius: 12px;
+}
+
+.button {
+    font-size: 1.0rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: royalblue;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #202020;
+    padding: 16px 30px;
+    transform: scale(1.0);
+    -webkit-transition: -webkit-transform 0.25s;
+    transition: transform 0.25s;
+}
+
+.button:hover {
+    background-color: dodgerblue;
+    box-shadow: 0 0 20px #202020;
+    color: navy;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: steelblue;
+    box-shadow: 0 0 0px #202020;
+    transform: scale(0.95);
+}
