@@ -11,28 +11,19 @@ export default function BtnPanel(props: ButtonProps) {
     return (
         <div className="button-panel">
 
-            <button type="button" onClick={props.displayImg}
-                className="button"
-            >
+            <button type="button" onClick={props.displayImg}>
                 Display/Change img
             </button>
 
-            <button type="button" onClick={props.handleHiddenImg}
-                className="button"
-            >
+            <button type="button" onClick={props.handleHiddenImg}>
                 Hide img
             </button>
 
-            <button type="button" onClick={props.handleHiddenQuote}
-                className="button"
-            >
+            <button type="button" onClick={props.handleHiddenQuote}>
                 Hide quote
             </button>
 
-
-            <button type="button" onClick={props.displayQuote}
-                className="button"
-            >
+            <button type="button" onClick={props.displayQuote}>
                 Display/Change quote
             </button>
 

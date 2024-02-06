@@ -5,10 +5,38 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #000;
+  background-color: hsl(0, 0%, 0%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: hsl(225, 73%, 57%);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px hsl(0, 0%, 13%);
+  padding: 7px 20px;
+  transform: scale(1.0);
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+}
+
+button:hover {
+  background-color: hsl(210, 100%, 56%);
+  box-shadow: 0 0 20px hsl(0, 0%, 13%);
+  color: hsl(240, 100%, 25%);
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: hsl(207, 44%, 49%);
+  box-shadow: 0 0 0px hsl(0, 0%, 13%);
+  color: hsl(0, 0%, 96%);
+  transform: scale(0.95);
 }

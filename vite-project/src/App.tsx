@@ -4,6 +4,7 @@ import SelectComp from "./components/SelectComp";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
+import palmerImg from '/images/palmer.jpg';
 import './App.css'
 
 type DataProps = {
@@ -21,14 +22,16 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const callerQuote = () => {
       fetch("https://api.quotable.io/random")
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((error) => console.log(error?.message));
+        setIsLoading(false);
     }
     callerQuote();
-    return () => console.log("useEffect clean-up (1)!");
+    return () => console.log("Clean-up effect for quote done");
   }, [changeQuote]);
 
   useEffect(() => {
@@ -40,7 +43,7 @@ function App() {
         setIsLoading(false)
     }
     callerImg();
-    return () => console.log("useEffect clean-up (2)!")
+    return () => console.log("Clean-up effect for img done");
   }, [changeImg]);
 
   const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
@@ -167,6 +170,10 @@ function App() {
     setSelectedColorsPalette(e.target.value);
   };
 
+  const handleDownloadImg = () => {
+    setUrlImg(palmerImg)
+  }
+
   return (
     <main>
       <div className="main-screen">
@@ -181,10 +188,20 @@ function App() {
 
         <div className="panel-div">
           
-          <SelectComp
-            selectedColorsPalette={selectedColorsPalette}
-            handleChangeOptions={handleChangeOptions}
-          />
+          <div className="select-btn">
+
+            <SelectComp
+              selectedColorsPalette={selectedColorsPalette}
+              handleChangeOptions={handleChangeOptions}
+            />
+
+            <div>
+              <button type="button" onClick={handleDownloadImg}>
+                Download public IMG
+              </button>
+            </div>
+
+          </div>
 
           <MotionCountainer 
             percent_w1={percent_w1}

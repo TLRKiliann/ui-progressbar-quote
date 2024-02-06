@@ -1,5 +1,6 @@
 import { Spinner } from '@chakra-ui/spinner'
-//import urlImg from "/images/palmer.jpg";
+//import palmerImg from "/images/palmer.jpg";
+//<img src={palmerImg} width={800} height={450} alt="picsum img " className="img" /> 
 import './styles/FrameComp.css';
 
 type FrameProps = {
@@ -11,10 +12,10 @@ type FrameProps = {
 }
 
 export default function FrameComp({ colorBgOne, colorBgTwo, urlImg, data, isLoading }: FrameProps) {
-
+  
   if (isLoading) {
     return (
-      <div style={{position: "absolute", top: "0px", right: "0px", bottom: "0px", left: "0px"}}>
+      <div style={{position: "absolute", top: "300px"}}>
         <Spinner />
       </div>
   )};

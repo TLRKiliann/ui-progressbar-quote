@@ -11,14 +11,14 @@
     width: 100%;
     text-align: center;
     border-radius: 25px 25px 25px 25px;
-    color: #303030;
-    margin-right: -5px
+    color: hsl(0, 0%, 19%);
+    margin-right: -5px;
 }
   
 .para-motion2 {
     width: 100%;
     text-align: center;
     border-radius: 25px 25px 25px 25px;
-    color: #303030;
-    margin-left: -5px
+    color: hsl(0, 0%, 19%);
+    margin-left: -5px;
 }

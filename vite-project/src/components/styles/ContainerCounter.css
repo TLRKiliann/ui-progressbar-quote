@@ -10,7 +10,9 @@
     justify-content: space-between;
     align-items: center;
     width: 60%;
-    padding: 10px;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 7px 0 0 7px;
+    padding: 10px 10px;
 }
 
 .box-countTwo {
@@ -18,14 +20,16 @@
     justify-content: space-between;
     align-items: center;
     width: 60%;
-    padding: 10px;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 0 7px 7px 0;
+    padding: 10px 10px;
 }
 
 .div-btn {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 200px;
+    justify-content: space-between;
+    width: 140px;
 }
 
 .div-p {
@@ -40,10 +44,10 @@
 .btn-circle {
     font-weight: bold;
     cursor: pointer;
-    background-color: royalblue;
+    background-color: hsl(225, 73%, 57%);
     border: none;
     border-radius: 100%;
-    box-shadow: 0 0 10px #202020;
+    box-shadow: 0 0 10px hsl(0, 0%, 13%);
     padding: 10px 10px;
     transform: scale(1.0);
     -webkit-transition: -webkit-transform 0.25s;
@@ -51,16 +55,16 @@
 }
   
 .btn-circle:hover {
-    background-color: dodgerblue;
+    background-color: hsl(210, 100%, 56%);
     box-shadow: 0 0 20px #202020;
     color: navy;
     transform: scale(1.05);
 }
   
 .btn-circle:active {
-    background-color: steelblue;
-    box-shadow: 0 0 0px #202020;
-    color: lightgreen;
+    background-color: hsl(207, 44%, 49%);
+    box-shadow: 0 0 0px hsl(0, 0%, 13%);
+    color: hsl(120, 73%, 75%);
     transform: scale(0.95);
 }
   

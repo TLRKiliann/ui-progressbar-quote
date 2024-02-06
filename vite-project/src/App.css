@@ -29,9 +29,16 @@ main {
 
 .panel-div {
   width: 900px;
-  background: #303030;
+  background: hsl(0, 0%, 19%);
   border-radius: 12px;
   margin: 0px auto;
   padding: 40px;
-  padding-bottom: 20px;
+}
+
+.select-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 15%);
+  padding: 20px;
 }
