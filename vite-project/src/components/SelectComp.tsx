@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './styles/SelectComp.css';
 
 type SelectProps = {
     selectedColorsPalette: string;

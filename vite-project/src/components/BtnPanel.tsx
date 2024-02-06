@@ -1,4 +1,4 @@
-import '../App.css';
+import './styles/BtnPanel.css';
 
 type ButtonProps = {
     displayImg: () => void;

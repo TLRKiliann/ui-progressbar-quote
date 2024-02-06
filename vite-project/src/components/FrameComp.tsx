@@ -1,3 +1,5 @@
+import './styles/FrameComp.css';
+
 type FrameProps = {
     colorBgOne: string;
     colorBgTwo: string;

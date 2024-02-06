@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import '../App.css';
+import './styles/MotionCountainer.css';
 
 type MotionProps = {
     percent_w1: number;
@@ -23,7 +23,7 @@ export default function MotionCountainer({percent_w1, percent_w2, colorBgOne, co
                 >
                 <p className="para-motion1" 
                     style={{background: `linear-gradient(30deg, ${colorBgOne} 10%, ${colorBgTwo} 90%)`}}>
-                    {percent_w1 ? `${percent_w1.toFixed(2)}%` : ""}
+                    {percent_w1 ? `${percent_w1.toFixed(2)}%` : null}
                 </p>
             </motion.div>
 
@@ -39,7 +39,7 @@ export default function MotionCountainer({percent_w1, percent_w2, colorBgOne, co
                 >
                 <p className="para-motion2"
                     style={{background: `linear-gradient(30deg, ${colorBgTwo} 10%, ${colorBgOne} 90%)`}}>
-                    {percent_w2 ? `${percent_w2.toFixed(2)}%` : ""}
+                    {percent_w2 ? `${percent_w2.toFixed(2)}%` : null}
                 </p>
             </motion.div>
     </div>

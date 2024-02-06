@@ -1,6 +1,6 @@
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import '../App.css';
+import './styles/ContainerCounter.css';
 
 type CountainerCounterProps = {
     countOne: number;
@@ -40,13 +40,13 @@ export default function ContainerCounter({
                     <button type="button" onClick={incrementOne}
                         className="btn-circle"
                     >
-                        <FaArrowAltCircleLeft size={24} />
+                        <FaArrowAltCircleLeft size={24} className="react-icons" />
                     </button>
 
                     <button type="button" onClick={decrementOne}
                         className="btn-circle"
                     >
-                        <FaArrowAltCircleRight size={24} />
+                        <FaArrowAltCircleRight size={24} className="react-icons" />
                     </button>
 
                 </div>
@@ -68,13 +68,14 @@ export default function ContainerCounter({
                     <button type="button" onClick={incrementTwo}
                         className="btn-circle"
                     >
-                        <FaArrowAltCircleLeft size={24} />
+                        <FaArrowAltCircleLeft size={24} className="react-icons" />
+                        {/*style={{marginBottom: "-3px"}} */}
                     </button>
 
                     <button type="button" onClick={decrementTwo}
                         className="btn-circle"
                     >
-                        <FaArrowAltCircleRight size={24} />
+                        <FaArrowAltCircleRight size={24} className="react-icons" />
                     </button>
 
                 </div>
