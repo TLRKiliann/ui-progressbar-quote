@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import type { PhotoProps } from "./lib/definitions";
 import { photos } from './lib/data';
 import FrameComp from "./components/FrameComp";
 import SelectComp from "./components/SelectComp";
+import DownloaderImg from "./components/DownloaderImg";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
@@ -35,12 +35,6 @@ function App() {
   );
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  
-  /*
-  const [changeQuote, setChangeQuote] = useState<boolean>(false);
-  const [changeImg, setChangeImg] = useState<boolean>(false);
-  const [boolBoxImg, setBoolBoxImg] = useState<boolean>(false);
-  */
 
   useEffect(() => {
     setIsLoading(true);
@@ -84,7 +78,7 @@ function App() {
   } else if (selectedColorsPalette === "yellowCyan") {
     colorPalettOne = ["yellow", "orange", "orangered", "blueviolet"];
     colorPalettTwo = ["cyan", "lightgreen", "turquoise", "violet"];
-  }
+  };
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
   const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
@@ -172,7 +166,6 @@ function App() {
   };
 
   const displayImg = (): void => {
-    //setChangeImg(!changeImg);
     setHollyBooly({...hollyBooly, changeImg: !hollyBooly.changeImg})
   };
 
@@ -181,7 +174,6 @@ function App() {
   };
 
   const displayQuote = (): void => {
-    //setChangeQuote(!changeQuote);
     setHollyBooly({...hollyBooly, changeQuote: !hollyBooly.changeQuote})
   };
 
@@ -194,7 +186,6 @@ function App() {
   };
 
   const handleBoolBoxImg = () => {
-    //setBoolBoxImg(!boolBoxImg);
     setHollyBooly({...hollyBooly, boolBoxImg: !hollyBooly.boolBoxImg})
   };
 
@@ -226,27 +217,12 @@ function App() {
               handleChangeOptions={handleChangeOptions}
             />
 
-            {hollyBooly.boolBoxImg === true ? (
-              <div className="container-img">
-                <div className="box-img">
-
-                  <span onClick={handleBoolBoxImg} className="close-span">X</span>
-                  <h4>Download an image: </h4>
-              
-                  {photos.map((photo: PhotoProps) => (
-                    <span key={photo.id} onClick={() => handleDownloadImg(photo.id)}>➡️ {photo.name}</span>
-                  ))}
-
-                </div>
-              </div>
-              ) : null
-            }
-
-            <div>
-              <button type="button" onClick={handleBoolBoxImg}>
-                Open img box
-              </button>
-            </div>
+            <DownloaderImg 
+              hollyBooly={hollyBooly}
+              handleBoolBoxImg={handleBoolBoxImg}
+              photos={photos}
+              handleDownloadImg={(id) => handleDownloadImg(id)}
+            />
 
           </div>
 
