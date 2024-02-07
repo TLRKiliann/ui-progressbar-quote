@@ -6,8 +6,9 @@ You can change:
 - background and/or images with same quote 
 - background and/or quote with same image
 - background and/or images and change quote
+- import images from public/images
 
-You can just change the background
+You can change background color.
 
 ## Install
 
@@ -18,5 +19,5 @@ You can just change the background
 ## Features
 
 - Quote from API call https://api.quotable.io/random
-- Img from API call https://picsum.photos/1600/1000
+- Img from API call https://picsum.photos/1600/1000 & from public/images
 - progressbar with framer-motion (display percent and percentage change)
