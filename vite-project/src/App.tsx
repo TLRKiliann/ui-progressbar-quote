@@ -1,22 +1,14 @@
+import { PhotoProps, DataProps, HollyBoolyProps } from "./lib/definitions";
 import { useState, useEffect } from "react";
 import { photos } from './lib/data';
+import { getColorPalette, getPercent } from "./lib/functions";
 import FrameComp from "./components/FrameComp";
 import SelectComp from "./components/SelectComp";
 import DownloaderImg from "./components/DownloaderImg";
 import MotionCountainer from "./components/MotionCountainer";
 import CountainerCounter from './components/ContainerCounter';
 import BtnPanel from './components/BtnPanel';
-import './App.css'
-
-type DataProps = {
-  content: string;
-};
-
-type HollyBoolyProps = {
-  changeQuote: boolean;
-  changeImg: boolean;
-  boolBoxImg: boolean;
-};
+import './App.css';
 
 function App() {
 
@@ -63,22 +55,7 @@ function App() {
 
   const [selectedColorsPalette, setSelectedColorsPalette] = useState<string>("yellowRed");
 
-  let colorPalettOne: string[] = ["yellow", "orange", "orangered", "red"];
-  let colorPalettTwo: string[] = ["yellow", "orange", "orangered", "red"];
-
-  if (selectedColorsPalette === "yellowRed") {
-    colorPalettOne = ["yellow", "orange", "orangered", "red"];
-    colorPalettTwo = ["yellow", "orange", "orangered", "red"];
-  } else if (selectedColorsPalette === "cyanViolet") {
-    colorPalettOne = ["cyan", "deepskyblue", "dodgerblue", "violet"];
-    colorPalettTwo = ["cyan", "deepskyblue", "dodgerblue", "violet"];
-  } else if (selectedColorsPalette === "pinkViolet") {
-    colorPalettOne = ["pink", "hotpink", "violet", "blueviolet"];
-    colorPalettTwo = ["pink", "hotpink", "violet", "blueviolet"];
-  } else if (selectedColorsPalette === "yellowCyan") {
-    colorPalettOne = ["yellow", "orange", "orangered", "blueviolet"];
-    colorPalettTwo = ["cyan", "lightgreen", "turquoise", "violet"];
-  };
+  const { colorPalettOne, colorPalettTwo } = getColorPalette(selectedColorsPalette);
 
   const [colorBgOne, setColorBgOne] = useState<string>(colorPalettOne[0]);
   const [colorBgTwo, setColorBgTwo] = useState<string>(colorPalettTwo[0]);
@@ -126,12 +103,7 @@ function App() {
     return () => console.log("useEffect clean-up (3)!");
   }, [selectedColorsPalette]);
 
-  let percent_w1 = null;
-  let percent_w2 = null;
-
-  let total: number = countOne + countTwo;
-  percent_w1 = (countOne * 100) / total;
-  percent_w2 = (countTwo * 100) / total;
+  const { percent_w1, percent_w2 } = getPercent({countOne, countTwo});
 
   const incrementOne = (): void => {
     let i = countOne;
@@ -165,6 +137,25 @@ function App() {
     }
   };
 
+  const handleChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setSelectedColorsPalette(e.target.value);
+  };
+
+  const handleBoolBoxImg = (): void => {
+    setHollyBooly({...hollyBooly, boolBoxImg: !hollyBooly.boolBoxImg})
+  };
+
+  const handleDownloadImg = (id: number): PhotoProps[] | undefined => {
+    const findById = photos.find((p: PhotoProps) => p.id === id);
+    if (findById) {
+      const nameImg = findById?.name;
+      const mappToFindNameImg = photos.filter((m: PhotoProps) => m.name === nameImg ? setUrlImg(m.name) : m);
+      return mappToFindNameImg;
+    } else {
+      return undefined;
+    }
+  };
+
   const displayImg = (): void => {
     setHollyBooly({...hollyBooly, changeImg: !hollyBooly.changeImg})
   };
@@ -179,21 +170,6 @@ function App() {
 
   const handleHiddenQuote = (): void => {
     setData({content: ""});
-  };
-
-  const handleChangeOptions = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedColorsPalette(e.target.value);
-  };
-
-  const handleBoolBoxImg = () => {
-    setHollyBooly({...hollyBooly, boolBoxImg: !hollyBooly.boolBoxImg})
-  };
-
-  const handleDownloadImg = (id: number) => {
-    const findById = photos.find((p) => p.id === id);
-    const nameImg = findById?.name;
-    const mappToFindNameImg = photos.map((m) => m.name === nameImg ? setUrlImg(m.name) : m);
-    return mappToFindNameImg;
   };
 
   return (
