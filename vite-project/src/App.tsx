@@ -108,7 +108,7 @@ function App() {
   const incrementOne = (): void => {
     let i = countOne;
     if (countOne < 3) {
-      setCountOne((count) => count += 1);
+      setCountOne(countOne + 1);
       setColorBgOne(colorPalettOne[i+1])
     }
   };
@@ -116,7 +116,7 @@ function App() {
   const decrementOne = (): void => {
     let j = countOne;
     if (countOne > 0 && countOne <= 3) {
-      setCountOne((count) => count -= 1);
+      setCountOne(countOne - 1);
       setColorBgOne(colorPalettOne[j-1])
     }
   };
@@ -124,7 +124,7 @@ function App() {
   const incrementTwo = (): void => {
     let k = countTwo;
     if (countTwo < 3) {
-      setCountTwo((count) => count += 1);
+      setCountTwo(countTwo + 1);
       setColorBgTwo(colorPalettTwo[k+1])
     }
   };
@@ -132,7 +132,7 @@ function App() {
   const decrementTwo = (): void => {
     let l = countTwo;
     if (countTwo > 0 && countTwo <= 3) {
-      setCountTwo((count) => count -= 1);
+      setCountTwo(countTwo - 1);
       setColorBgTwo(colorPalettTwo[l-1])
     }
   };
@@ -150,6 +150,7 @@ function App() {
     if (findById) {
       const nameImg = findById?.name;
       const mappToFindNameImg = photos.filter((m: PhotoProps) => m.name === nameImg ? setUrlImg(m.name) : m);
+      console.log(mappToFindNameImg, "mappToFindNameImg")
       return mappToFindNameImg;
     } else {
       return undefined;
