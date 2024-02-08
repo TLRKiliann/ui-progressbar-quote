@@ -1,0 +1,64 @@
+.container-img {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+    z-index: 10;
+}
+  
+.box-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 450px;
+    font-size: 1.2rem;
+    border-radius: 7px;
+    margin: auto;
+    padding: 20px;
+}
+
+.box-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: hsl(0, 0%, 13%);
+    border-radius: 7px;
+    box-shadow: inset 0 0 10px hsl(0, 0%, 0%);
+    padding: 20px;
+}
+
+.box-inner > .close-span {
+    position: absolute;
+    top: 25px;
+    width: 410px;
+    display: flex;
+    justify-content: end;
+    color: hsl(0, 0%, 96%);
+}
+
+.box-inner > .close-span:hover {
+    color: hsl(195, 100%, 50%);
+}
+
+.box-inner > .close-span:active {
+    color: hsl(180, 100%, 50%);
+}
+
+.box-img h4 {
+    margin: auto;
+    margin-bottom: 10px;
+}
+  
+.box-img span {
+    margin: 4px 0px;
+    cursor: pointer;
+    color: hsl(195, 100%, 50%);
+}
+  
+.box-img span:hover {
+    cursor: pointer;
+    color: hsl(0, 0%, 100%);
+}
