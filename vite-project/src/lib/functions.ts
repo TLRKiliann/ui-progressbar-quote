@@ -24,11 +24,12 @@ export function getColorPalette(selectedColorsPalette: string) {
 }
 
 export function getPercent({countOne, countTwo}: CounterProps) {
-    let percent_w1 = null;
-    let percent_w2 = null;
-  
+    let percent_w1: number = 0;
+    let percent_w2: number = 0;
+
     let total: number = countOne + countTwo;
     percent_w1 = (countOne * 100) / total;
     percent_w2 = (countTwo * 100) / total;
+
     return { percent_w1, percent_w2 }
 }
