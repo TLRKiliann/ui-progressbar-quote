@@ -89,8 +89,8 @@ function App() {
             setColorBgTwo("cyan");
             break;
           default:
-            setCountOne(1);
-            setCountTwo(1);
+            setCountOne(0);
+            setCountTwo(0);
             setColorBgOne("yellow");
             setColorBgTwo("yellow");
             break;
