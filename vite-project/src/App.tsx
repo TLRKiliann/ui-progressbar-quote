@@ -194,6 +194,8 @@ function App() {
             />
 
             <DownloaderImg 
+              colorBgOne={colorBgOne}
+              colorBgTwo={colorBgTwo}
               hollyBooly={hollyBooly}
               handleBoolBoxImg={handleBoolBoxImg}
               photos={photos}
