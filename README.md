@@ -17,11 +17,11 @@ or
 Palette1: ["yellow", "orange", "orangered", "red"];
 Palette2: ["aqua", "deepskyblue", "blue", "violet"];
 
-You can change:
+You can:
+- download images from public/images
 - background and/or images with same quote 
 - background and/or quote with same image
 - background and/or images and change quote
-- import images from public/images
 
 ## Install
 
@@ -34,3 +34,7 @@ You can change:
 - Quote from API call https://api.quotable.io/random
 - Img from API call https://picsum.photos/1600/1000 & from public/images
 - progressbar with framer-motion (display percent and percentage change depends of intensity of colors).
+
+Enjoy it !
+
+ko@l@tree :koala:
