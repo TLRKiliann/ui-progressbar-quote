@@ -19,7 +19,7 @@ button {
   cursor: pointer;
   background-color: hsl(225, 73%, 57%);
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 0 10px hsl(0, 0%, 13%);
   padding: 10px 20px;
   transform: scale(1.0);
