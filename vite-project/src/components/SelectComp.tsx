@@ -19,6 +19,7 @@ export default function SelectComp({ selectedColorsPalette, handleChangeOptions 
         <option value="cyanViolet">Cyan-Violet</option>
         <option value="pinkViolet">Pink-Violet</option>
         <option value="yellowCyan">Yellow-Cyan</option>
+        <option value="blackWhite">White-Black</option>
       </select>
     </label>
   )

@@ -19,6 +19,9 @@ export function getColorPalette(selectedColorsPalette: string) {
     } else if (selectedColorsPalette === "yellowCyan") {
       colorPalettOne = ["yellow", "orange", "orangered", "blueviolet"];
       colorPalettTwo = ["cyan", "lightgreen", "turquoise", "violet"];
+    } else if (selectedColorsPalette === "blackWhite") {
+      colorPalettOne = ["white", "grey", "dimgrey", "black"];
+      colorPalettTwo = ["white", "grey", "dimgrey", "black"];
     }
     return { colorPalettOne, colorPalettTwo };
 }

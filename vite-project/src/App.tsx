@@ -88,6 +88,12 @@ function App() {
             setColorBgOne("yellow");
             setColorBgTwo("cyan");
             break;
+            case "blackWhite":
+              setCountOne(0);
+              setCountTwo(0);
+              setColorBgOne("white");
+              setColorBgTwo("white");
+              break;
           default:
             setCountOne(0);
             setCountTwo(0);

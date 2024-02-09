@@ -1,6 +1,4 @@
-import { Spinner } from '@chakra-ui/spinner'
-//import palmerImg from "/images/palmer.jpg";
-//<img src={palmerImg} width={800} height={450} alt="picsum img " className="img" /> 
+import { Spinner } from '@chakra-ui/spinner';
 import './styles/FrameComp.css';
 
 type FrameProps = {
@@ -29,10 +27,10 @@ export default function FrameComp({ colorBgOne, colorBgTwo, urlImg, data, isLoad
         {urlImg && data.content ? (
           <div className="para-img">
             <p className="layer-quote">{data?.content}</p>
-            <img src={urlImg} width={800} height={450} alt="picsum img " className="img" />
+            <img src={urlImg} alt="picsum img " className="img" />
           </div>
           ) : data?.content ? data.content : urlImg ? (
-            <img src={urlImg} width={800} height={450} alt="picsum img " className="img" />
+            <img src={urlImg} alt="picsum img " className="img" />
           ) : null
         }
       </div>
