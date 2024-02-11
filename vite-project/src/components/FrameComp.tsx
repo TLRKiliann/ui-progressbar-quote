@@ -27,10 +27,10 @@ export default function FrameComp({ colorBgOne, colorBgTwo, urlImg, data, isLoad
         {urlImg && data.content ? (
           <div className="para-img">
             <p className="layer-quote">{data?.content}</p>
-            <img src={urlImg} alt="picsum img " className="img" />
+            <img src={urlImg} width={680} height={430} alt="picsum img " className="img" />
           </div>
           ) : data?.content ? data.content : urlImg ? (
-            <img src={urlImg} alt="picsum img " className="img" />
+            <img src={urlImg} width={680} height={430} alt="picsum img " className="img" />
           ) : null
         }
       </div>

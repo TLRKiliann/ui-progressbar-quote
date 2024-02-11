@@ -48,8 +48,8 @@
 
 .img {
     display: flex;
-    width: 680px;
-    height: auto;
+/*     width: 700px;
+    height: auto; */
     object-fit: cover;
     border-radius: 7px;
     box-shadow: 0 0 4px rgba(50, 50, 50, 0.8);
