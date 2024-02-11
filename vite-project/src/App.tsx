@@ -1,4 +1,4 @@
-import { PhotoProps, DataProps, HollyBoolyProps } from "./lib/definitions";
+import { PhotoProps, HollyBoolyProps } from "./lib/definitions";
 import { useState, useEffect } from "react";
 import { photos } from './lib/data';
 import { getColorPalette, getPercent } from "./lib/functions";
@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
 
-  const [data, setData] = useState<DataProps>({content: ""});
+  const [data, setData] = useState<{content: string}>({content: ""});
   const [urlImg, setUrlImg] = useState<string>("");
   
   const [countOne, setCountOne] = useState<number>(0);
