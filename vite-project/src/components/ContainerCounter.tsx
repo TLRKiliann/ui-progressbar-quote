@@ -28,10 +28,10 @@ export default function ContainerCounter({
             <div className="box-countOne">
                 <div className="div-p" style={{color: "orange"}}>
                     <p>
-                        Count: {countOne}
+                        Intensity: {countOne}
                     </p>
                     <p>
-                        Percent: {percent_w1 ? percent_w1.toFixed(2) : "0"}%
+                        {percent_w1 ? percent_w1.toFixed(2) : "0"}%
                     </p>
                 </div>
 
@@ -56,10 +56,10 @@ export default function ContainerCounter({
             <div className="box-countTwo">
                 <div className="div-p" style={{color: "cyan"}}>
                     <p>
-                        Count: {countTwo}
+                        Intensity: {countTwo}
                     </p>
                     <p>
-                        Percent: {percent_w2 ? percent_w2.toFixed(2) : "0"}%
+                        {percent_w2 ? percent_w2.toFixed(2) : "0"}%
                     </p>
                 </div>
 
