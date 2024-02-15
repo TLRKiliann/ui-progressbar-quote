@@ -114,7 +114,7 @@ function App() {
   const incrementOne = (): void => {
     let i = countOne;
     if (countOne < 3) {
-      setCountOne(countOne + 1);
+      setCountOne((prevCount) => prevCount + 1);
       setColorBgOne(colorPalettOne[i+1])
     }
   };
@@ -122,7 +122,7 @@ function App() {
   const decrementOne = (): void => {
     let j = countOne;
     if (countOne > 0 && countOne <= 3) {
-      setCountOne(countOne - 1);
+      setCountOne((prevCount) => prevCount - 1);
       setColorBgOne(colorPalettOne[j-1])
     }
   };
@@ -130,7 +130,7 @@ function App() {
   const incrementTwo = (): void => {
     let k = countTwo;
     if (countTwo < 3) {
-      setCountTwo(countTwo + 1);
+      setCountTwo((prevCount) => prevCount + 1);
       setColorBgTwo(colorPalettTwo[k+1])
     }
   };
@@ -138,7 +138,7 @@ function App() {
   const decrementTwo = (): void => {
     let l = countTwo;
     if (countTwo > 0 && countTwo <= 3) {
-      setCountTwo(countTwo - 1);
+      setCountTwo((prevCount) => prevCount - 1);
       setColorBgTwo(colorPalettTwo[l-1])
     }
   };
